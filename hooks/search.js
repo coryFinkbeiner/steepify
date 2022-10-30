@@ -6,17 +6,13 @@ const fetcher = (...params) => fetch(...params).then(response => response.json()
 const useSearch = (term) => {
   const { getCookie } = useCookies();
 
-  console.log(term)
-
   const {
     data: searchResults,
     error: searchResultsError,
   } = useSWR(term ? `/search` : null, async () => {
 
-      const url = 'https://api.spotify.com/v1/search?q=' + term + '&type=artist';
+      const url = 'https://api.spotify.com/v1/search?q=' + term + '&type=album';
       const accessToken = getCookie('accessToken');
-
-      console.log({accessToken})
 
       return await fetcher(url, {
         method: 'GET',

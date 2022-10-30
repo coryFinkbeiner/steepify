@@ -1,6 +1,6 @@
 
 import Link from 'next/link'
-import { Input, Button, ButtonGroup} from '@chakra-ui/react'
+import { Input, Button, ButtonGroup, Image } from '@chakra-ui/react'
 
 
 import { useState, useEffect } from 'react'
@@ -28,13 +28,13 @@ function Search() {
     e.preventDefault()
     setCurrentSearch(input)
 
-
   }
+  console.log(JSON.stringify(searchResults, null, 2))
 
   return (
     <form onSubmit={handleSearchClick}>
       <div>
-        <Input placeholder='Search Albums by album name or artist name' size='lg' value={input} onChange={handleInputChange}/>
+        <Input placeholder='Search albums and songs' size='lg' value={input} onChange={handleInputChange}/>
         <Button colorScheme='blue' type="submit">Button</Button>
       </div>
       <pre>
