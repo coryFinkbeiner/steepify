@@ -1,6 +1,6 @@
 
 import Link from 'next/link'
-import { Box, Image } from '@chakra-ui/react'
+import { Box, Image, HStack, Button } from '@chakra-ui/react'
 
 
 import { useState, useEffect } from 'react'
@@ -14,15 +14,19 @@ function Album({ data }) {
 
   console.log(data)
 
+  const [highlight, setHighlight] = useState(null)
+
 
   return (
-    <Box onClick={() => console.log('TEST')} color='gray' width='100%'>
-        <Image
-          src={data.images[2].url}
-          objectFit='cover'
-        ></Image>
-        <span>{data.name} by</span>
-
+    <Box  width='100%'>
+      <HStack>
+          <Image
+            src={data.images[2].url}
+            objectFit='cover'
+          ></Image>
+          <span>{data.name} by {data.artists[0].name}</span>
+          <Button>Add to Bank</Button>
+      </HStack>
     </Box>
   )
 }
