@@ -11,17 +11,11 @@ import { useArtists, useSearch } from '../hooks'
 
 
 
-function Search() {
-
-  // console.log("well?", useArtists('TEST2'))
+function Search({ bank, setBank }) {
 
   const [input, setInput] = useState('')
-
   const [currentSearch, setCurrentSearch] = useState('')
-
   const {searchResults} = useSearch(currentSearch)
-
-  // const [result, setResult] = useState(useArtists(input))
 
   const handleInputChange = (e) => setInput(e.target.value)
 
@@ -30,7 +24,6 @@ function Search() {
     setCurrentSearch(input)
 
   }
-  //console.log(JSON.stringify(searchResults.items[0]))
 
   return (
     <div>
@@ -45,7 +38,7 @@ function Search() {
           {searchResults.albums.items.map((item, i) => {
             if (i <= 7) {
               return (
-                <Album data={item}></Album>
+                <Album bank={bank} setBank={setBank} data={item}></Album>
               )
             }
           })}

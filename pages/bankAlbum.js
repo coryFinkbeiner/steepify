@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react'
 import { } from '../hooks'
 
 
-function Album({ data, setBank, bank }) {
+function bankAlbum({ bank, setBank }) {
+
+  const [highlight, setHighlight] = useState(null)
 
   return (
     <Box>
@@ -14,20 +16,11 @@ function Album({ data, setBank, bank }) {
             objectFit='cover'
           ></Image>
           <span>{data.name} by {data.artists[0].name}</span>
-          <Button
-            onClick={
-              () => {
-                if (bank.length <= 2) {
-                  setBank([...bank, data])
-                }
-              }
-            }
-          >Add to Bank</Button>
-
+          <Button>Remove from Bank</Button>
       </HStack>
     </Box>
   )
 }
 
-export default Album;
+export default bankAlbum;
 
