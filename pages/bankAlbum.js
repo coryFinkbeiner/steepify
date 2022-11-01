@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { } from '../hooks'
 
 
-function bankAlbum({ bank, setBank }) {
+function BankAlbum({ bank, setBank, data }) {
 
   const [highlight, setHighlight] = useState(null)
 
@@ -22,5 +22,5 @@ function bankAlbum({ bank, setBank }) {
   )
 }
 
-export default bankAlbum;
+export default BankAlbum;
 

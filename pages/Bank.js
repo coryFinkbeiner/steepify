@@ -1,7 +1,7 @@
 
-import bankAlbum from './bankAlbum'
+import BankAlbum from './BankAlbum'
 
-import { Box, Stack } from '@chakra-ui/react'
+import { Box, Stack, Button } from '@chakra-ui/react'
 
 import { useState, useEffect } from 'react'
 
@@ -12,21 +12,39 @@ import {  } from '../hooks'
 
 function Bank({bank, setBank }) {
 
+  const [playlist, setPlaylist] = useState([])
+
+  const handleThread = e => {
+
+    
+
+    e.preventDefault()
+  }
+
+
   return (
    <Box>
-     <div>
-      {bank &&
-          <Stack>
-            {bank.map((item, i) => {
+    <div>
+      {bank.length === 3 &&
+        <Button onClick={handleThread}>
+          Thread
+        </Button>
+      }
+    </div>
+      <div>
+        {bank &&
+            <Stack>
+              {bank.map((item, i) => {
 
-              return (
-                <bankAlbum bank={bank} setBank={setBank} data={item}></bankAlbum>
-              )
+                return (
+                  <BankAlbum key={i} bank={bank} setBank={setBank} data={item}></BankAlbum>
+                )
 
-            })}
-          </Stack>
-        }
-     </div>
+              })}
+            </Stack>
+          }
+      </div>
+
    </Box>
   )
 }
