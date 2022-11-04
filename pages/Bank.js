@@ -22,13 +22,13 @@ function Bank({bank, setBank }) {
     let albumIDs = []
 
     for (let i = 0; i < bank.length; i++) {
-
-      console.log(bank[i])
       albumIDs.push(bank[i].id)
 
     }
 
-    console.log(useGetAlbumTracks(albumIDs))
+   console.log(useGetAlbumTracks(albumIDs))
+
+    // console.log('X', x)
 
     e.preventDefault()
   }
