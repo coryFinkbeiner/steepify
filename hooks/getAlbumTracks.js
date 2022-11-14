@@ -1,9 +1,8 @@
 
+
 import useCookies from './cookies';
 
-import { useState, useEffect } from 'react'
-
-// const fetcher = (...params) => fetch(...params).then(response => response.json());7:25p
+// const fetcher = (...params) => fetch(...params).then(response => response.json());
 
 const useGetAlbumTracks = (albumIDs) => {
   const { getCookie } = useCookies();
@@ -11,7 +10,8 @@ const useGetAlbumTracks = (albumIDs) => {
 
   // albumIDs = ["5XpEKORZ4y6OrCZSKsi46A", "2guirTSEqLizK7j9i1MTTZ"]
 
-  const playlist = []
+  let playlist = []
+
 
   for (let i = 0; i< albumIDs.length; i++) {
 
@@ -21,28 +21,130 @@ const useGetAlbumTracks = (albumIDs) => {
         Authorization: `Bearer ${accessToken}`
       }
     })
-    .then((response) => {
-      console.log('res before', response)
-      response.json()
-      console.log('res after', response)
-    })
-
+    .then((response) => response.json())
     .then((data) => {
-      // console.log('data.items', data.items)
-      // playlist.push(data)
-      playlist['key' + i] = data.items
-      // console.log({playlist})
+      console.log({data})
+      playlist.push(data.items)
+      console.log({playlist})
     })
     .catch(err => console.log(err))
+
   }
 
-  // console.log('return from useGet-', playlist)
 
-  return playlist
 
-}
+
+
+
+  // const {
+  //   data: albumTracks
+  // } = useSWR(albumID ? `/albums/${albumID}/tracks` : null, async () => {
+  //     const url = `https://api.spotify.com/v1/albums/${albumID}/tracks`;
+  //     const accessToken = getCookie('accessToken');
+
+  //     return await fetcher(url, {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`
+  //       }
+  //     });
+  //   },{revalidateOnFocus: false});
+  //   console.log('inside hook', albumTracks)
+  // return {albumTracks}
+
+  }
 
 export default useGetAlbumTracks;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import useCookies from './cookies';
+
+// import { useState, useEffect } from 'react'
+
+// // const fetcher = (...params) => fetch(...params).then(response => response.json());7:25p
+
+// const useGetAlbumTracks = (albumIDs) => {
+//   const { getCookie } = useCookies();
+//   const accessToken = getCookie('accessToken');
+//   // const [playlist, setPlaylist] = useState('')
+
+//   // albumIDs = ["5XpEKORZ4y6OrCZSKsi46A", "2guirTSEqLizK7j9i1MTTZ"]
+
+//   // const playlist = []
+
+//   // for (let i = 0; i< albumIDs.length; i++) {
+
+//     const response = await fetch(`https://api.spotify.com/v1/albums/${albumIDs[0]}/tracks`, {
+//       method: 'GET',
+//       headers: {
+//         Authorization: `Bearer ${accessToken}`
+//       }
+//     })
+//     .then(response => response.json())
+//     .then(response => {
+//       // console.log(JSON.stringify(response))
+//       // playlist.push(response)
+//       // setPlaylist(response)
+//       // console.log('PPP', playlist)
+//     })
+//   // }
+
+//     console.log('x', x)
+
+
+//   //   })
+//   //   .then((response) => {
+//   //     console.log('res before', response)
+//   //     response.json()
+//   //     console.log('res after', response)
+//   //   })
+
+//   //   .then((data) => {
+//   //     // console.log('data.items', data.items)
+//   //     // playlist.push(data)
+//   //     playlist['key' + i] = data.items
+//   //     // console.log({playlist})
+//   //   })
+//   //   .catch(err => console.log(err))
+
+
+//   // console.log('return from useGet-', playlist)
+
+//   // return playlist
+
+// }
+
+// export default useGetAlbumTracks;
+
+
+
+
+
+
+
+
+
+
 
 
 
