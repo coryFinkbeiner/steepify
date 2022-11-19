@@ -25,13 +25,13 @@ const useGetAlbumTracks = (albumIDs) => {
     .then((data) => {
       console.log({data})
       playlist.push(data.items)
-      console.log({playlist})
+      // console.log({playlist})
     })
     .catch(err => console.log(err))
 
   }
 
-
+  return playlist
 
 
 

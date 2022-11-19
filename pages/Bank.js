@@ -19,14 +19,24 @@ function Bank({bank, setBank }) {
 
   const handleThread = e => {
 
+    console.log('here')
+
+
     let albumIDs = []
 
     for (let i = 0; i < bank.length; i++) {
       albumIDs.push(bank[i].id)
-
+      
     }
 
-   console.log(useGetAlbumTracks(albumIDs))
+    var data = useGetAlbumTracks(albumIDs)
+
+    setPlaylist(data)
+
+    console.log('react data', playlist)
+
+
+  //  console.log('ass', useGetAlbumTracks(albumIDs))
 
     // console.log('X', x)
 
