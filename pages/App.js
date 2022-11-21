@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Bank from './Bank'
 import Search from './Search'
 
-import { HStack } from '@chakra-ui/react'
+import { SimpleGrid, Box } from '@chakra-ui/react'
 
 import { useState, useEffect } from 'react'
 
@@ -17,10 +17,14 @@ function App() {
   const [bank, setBank] = useState([])
 
   return (
-   <HStack>
-    <Search setBank={setBank} bank={bank}></Search>
-    <Bank setBank={setBank} bank={bank}></Bank>
-   </HStack>
+    <SimpleGrid columns={2} spacing={15}>
+      <Box height='80px'>
+        <Search setBank={setBank} bank={bank}></Search>
+      </Box>
+      <Box height='80px'>
+        <Bank setBank={setBank} bank={bank}></Bank>
+      </Box>
+    </SimpleGrid>
   )
 }
 

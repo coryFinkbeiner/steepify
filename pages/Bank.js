@@ -14,9 +14,6 @@ function Bank({bank, setBank }) {
 
   const [playlist, setPlaylist] = useState([])
 
-  // console.log(useGetAlbumTracks(["5XpEKORZ4y6OrCZSKsi46A", "2guirTSEqLizK7j9i1MTTZ"]))
-
-
   const handleThread = e => {
 
     console.log('here')
@@ -26,7 +23,7 @@ function Bank({bank, setBank }) {
 
     for (let i = 0; i < bank.length; i++) {
       albumIDs.push(bank[i].id)
-      
+
     }
 
     var data = useGetAlbumTracks(albumIDs)
@@ -34,11 +31,6 @@ function Bank({bank, setBank }) {
     setPlaylist(data)
 
     console.log('react data', playlist)
-
-
-  //  console.log('ass', useGetAlbumTracks(albumIDs))
-
-    // console.log('X', x)
 
     e.preventDefault()
   }
@@ -78,63 +70,80 @@ export default Bank;
 
 
 
-// import useCookies from './cookies';
-
-// // const fetcher = (...params) => fetch(...params).then(response => response.json());
-
-// const useGetAlbumTracks = (bank) => {
-//   console.log('inside bank', bank)
-//   const { getCookie } = useCookies();
-//   const accessToken = getCookie('accessToken');
-
-//   let playlist = []
 
 
-//   for (let i = 0; i < bank.length; i++) {
 
-//     console.log(bank[i].id)
+// import BankAlbum from './BankAlbum'
 
-//     fetch(`https://api.spotify.com/v1/albums/${bank[i].id}/tracks`, {
-//       method: 'GET',
-//       // mode: 'no-cors',
-//       headers: {
-//         Authorization: `Bearer ${accessToken}`
-//       },
-//     })
-//     .then(res => console.log(res))
+// import { Box, Stack, Button } from '@chakra-ui/react'
+
+// import { useState, useEffect } from 'react'
+
+// import { useGetAlbumTracks } from '../hooks'
 
 
-//     .then((response) => response.body.json())
-//     // .then((data) => {
-//     //   console.log({data})
-//     //   // playlist.push(data.items)
-//     //   // console.log({playlist})
-//     // })
-//     .catch(err => console.log(err))
 
+
+// function Bank({bank, setBank }) {
+
+//   const [playlist, setPlaylist] = useState([])
+
+//   // console.log(useGetAlbumTracks(["5XpEKORZ4y6OrCZSKsi46A", "2guirTSEqLizK7j9i1MTTZ"]))
+
+
+//   const handleThread = e => {
+
+//     console.log('here')
+
+
+//     let albumIDs = []
+
+//     for (let i = 0; i < bank.length; i++) {
+//       albumIDs.push(bank[i].id)
+
+//     }
+
+//     var data = useGetAlbumTracks(albumIDs)
+
+//     setPlaylist(data)
+
+//     console.log('react data', playlist)
+
+
+//   //  console.log('ass', useGetAlbumTracks(albumIDs))
+
+//     // console.log('X', x)
+
+//     e.preventDefault()
 //   }
 
 
+//   return (
+//    <Box>
+//     <div>
+//       {bank.length === 3 &&
+//         <Button onClick={handleThread}>
+//           Thread
+//         </Button>
+//       }
+//     </div>
+//       <div>
+//         {bank &&
+//             <Stack>
+//               {bank.map((item, i) => {
 
+//                 return (
+//                   <BankAlbum key={i} bank={bank} setBank={setBank} data={item}></BankAlbum>
+//                 )
 
-//   // const {
-//   //   data: albumTracks
-//   // } = useSWR(albumID ? `/albums/${albumID}/tracks` : null, async () => {
-//   //     const url = `https://api.spotify.com/v1/albums/${albumID}/tracks`;
-//   //     const accessToken = getCookie('accessToken');
+//               })}
+//             </Stack>
+//           }
+//       </div>
 
-//   //     return await fetcher(url, {
-//   //       method: 'GET',
-//   //       headers: {
-//   //         Authorization: `Bearer ${accessToken}`
-//   //       }
-//   //     });
-//   //   },{revalidateOnFocus: false});
-//   //   console.log('inside hook', albumTracks)
-//   // return {albumTracks}
-
+//    </Box>
+//   )
 // }
 
-// export default useGetAlbumTracks;
-
+// export default Bank;
 

@@ -15,12 +15,26 @@ export default function Home({ providers }) {
 
 
 
-
   return (
-    <div className="">
-      <Test></Test>
-    </div>
+    <main>
+      <h1>Cory&apos;s Awesome Spotify Playlist App</h1>
+        <p>Description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ...</p>
+
+      {Object.values(providers).map((provider) => (
+        <div key={provider.name}>
+          <button
+            onClick={() => signIn(provider.id, { callbackUrl: "/App"})}
+          >
+            Login with {provider.name}
+          </button>
+        </div>
+      ))}
+
+    </main>
+
   )
+
+
 }
 
 export async function getServerSideProps() {
@@ -36,18 +50,27 @@ export async function getServerSideProps() {
 }
 
 
-{/* <main>
-<h1>Cory&apos;s Awesome Spotify Playlist App</h1>
-<p>Description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ...</p>
+// <main>
+// <h1>Cory&apos;s Awesome Spotify Playlist App</h1>
+// <p>Description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ...</p>
 
-{Object.values(providers).map((provider) => (
-  <div key={provider.name}>
-    <button
-      onClick={() => signIn(provider.id, { callbackUrl: "/App"})}
-    >
-      Login with {provider.name}
-    </button>
-  </div>
-))}
+// {Object.values(providers).map((provider) => (
+//   <div key={provider.name}>
+//     <button
+//       onClick={() => signIn(provider.id, { callbackUrl: "/App"})}
+//     >
+//       Login with {provider.name}
+//     </button>
+//   </div>
+// ))}
 
-</main> */}
+// </main>
+
+
+
+
+// return (
+//   <div className="">
+//     <Test></Test>
+//   </div>
+// )
