@@ -4,8 +4,12 @@
 
 import Link from 'next/link';
 import Sidebar from "../components/Sidebar"
-import MyApp from "/Users/coryfinkbeiner/steeperkeeper/steepify_next1/pages/_app.js"
+import MyApp from "./_app.js"
 import { getProviders, signIn } from "next-auth/react"
+
+import Test from "./Test.js"
+
+
 
 export default function Home({ providers }) {
 
@@ -14,21 +18,7 @@ export default function Home({ providers }) {
 
   return (
     <div className="">
-      <main>
-        <h1>Cory&apos;s Awesome Spotify Playlist App</h1>
-        <p>Description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ...</p>
-
-        {Object.values(providers).map((provider) => (
-          <div key={provider.name}>
-            <button
-              onClick={() => signIn(provider.id, { callbackUrl: "/App"})}
-            >
-              Login with {provider.name}
-            </button>
-          </div>
-        ))}
-
-      </main>
+      <Test></Test>
     </div>
   )
 }
@@ -44,3 +34,20 @@ export async function getServerSideProps() {
     }
   }
 }
+
+
+{/* <main>
+<h1>Cory&apos;s Awesome Spotify Playlist App</h1>
+<p>Description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ... description of this app ...</p>
+
+{Object.values(providers).map((provider) => (
+  <div key={provider.name}>
+    <button
+      onClick={() => signIn(provider.id, { callbackUrl: "/App"})}
+    >
+      Login with {provider.name}
+    </button>
+  </div>
+))}
+
+</main> */}
