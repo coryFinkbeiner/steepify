@@ -37,7 +37,7 @@ function Bank({bank, setBank }) {
 
 
   return (
-   <Box>
+   <Box margin={"10px"}>
     <div>
       {bank.length === 3 &&
         <Button onClick={handleThread}>

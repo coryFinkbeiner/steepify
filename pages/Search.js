@@ -1,15 +1,8 @@
-
-
 import Link from 'next/link'
 import Album from './Album'
-
-import { Input, Button, ButtonGroup, Stack } from '@chakra-ui/react'
-
+import { Input, Button, ButtonGroup, Stack, HStack, Box } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
-
 import { useArtists, useSearch } from '../hooks'
-
-
 
 
 function Search({ bank, setBank }) {
@@ -21,35 +14,35 @@ function Search({ bank, setBank }) {
   const handleInputChange = (e) => setInput(e.target.value)
 
   const handleSearchClick = (e) => {
-
     e.preventDefault()
     setCurrentSearch(input)
   }
 
   return (
-    <div>
-      <form onSubmit={handleSearchClick}>
-        <div>
-          <Input placeholder='Search albums only' size='lg' value={input} onChange={handleInputChange}/>
-          <Button colorScheme='blue' type="submit">Search</Button>
-        </div>
-      </form>
-      <br></br>
+    <Box margin={"10px"}>
       <div>
-        {searchResults &&
-          <Stack>
-            {searchResults.albums.items.map((item, i) => {
-              if (i <= 7) {
-                return (
-                  <Album key={i} bank={bank} setBank={setBank} data={item}></Album>
-                )
-              }
-            })}
-          </Stack>
-        }
+        <form onSubmit={handleSearchClick}>
+          <HStack>
+            <Button colorScheme='blue' type="submit">Search</Button>
+            <Input placeholder='Search Albums' size='lg' value={input} onChange={handleInputChange}/>
+          </HStack>
+        </form>
+        <br></br>
+        <Box height={"90vh"} outline={"2px groove black"} >
+          {searchResults &&
+            <Stack>
+              {searchResults.albums.items.map((item, i) => {
+                if (i <= 11) {
+                  return (
+                    <Album key={i} bank={bank} setBank={setBank} data={item}></Album>
+                  )
+                }
+              })}
+            </Stack>
+          }
+        </Box>
       </div>
-    </div>
-
+    </Box>
   )
 }
 

@@ -1,15 +1,10 @@
-
 import Link from 'next/link'
 import Bank from './Bank'
 import Search from './Search'
 
 import { SimpleGrid, Box } from '@chakra-ui/react'
-
 import { useState, useEffect } from 'react'
-
 import {  } from '../hooks'
-
-
 
 
 function App() {
