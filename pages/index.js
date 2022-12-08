@@ -7,7 +7,7 @@ import Sidebar from "../components/Sidebar"
 import MyApp from "./_app.js"
 import { getProviders, signIn } from "next-auth/react"
 
-import Test from "./Test.js"
+import Test from "./Test.js" // delete?
 
 
 

@@ -1,4 +1,5 @@
 import Bank from './Bank.js'
+import Search from './Search.js'
 
 import { SimpleGrid, Box } from '@chakra-ui/react'
 
