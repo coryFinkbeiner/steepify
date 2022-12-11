@@ -14,7 +14,7 @@ export default function Home({ providers }) {
       {Object.values(providers).map((provider) => (
         <div key={provider.name}>
           <button
-            onClick={() => signIn(provider.id, { callbackUrl: "/App"})}
+            onClick={() => signIn(provider.id, { callbackUrl: "/thread"})}
           >
             Login with {provider.name}
           </button>
@@ -26,7 +26,7 @@ export default function Home({ providers }) {
 
 export async function getServerSideProps() {
   const providers = await getProviders()
-  
+
   return {
     props: {
       providers

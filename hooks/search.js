@@ -7,7 +7,6 @@ const fetcher = (...params) => fetch(...params).then(response => response.json()
 const useSearch = (term) => {
   const { getCookie } = useCookies();
 
-
   const {
     data: searchResults,
     error: searchResultsError,
@@ -28,6 +27,10 @@ const useSearch = (term) => {
   }
 
 export default useSearch;
+
+
+
+
 
 
 

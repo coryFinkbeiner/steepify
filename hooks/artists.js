@@ -26,20 +26,10 @@ const useArtists = (term) => {
   const artistsLoading = !artists && !artistsError;
 console.log(artists);
 
-///////////////////
 
   return artists
 
 }
-
-////// / // ////////
-
-  // return {
-  //   artists,
-  //   artistsLoading,
-  //   artistsError,
-  //   fetchArtists
-  // };}
 
 export default useArtists;
 
