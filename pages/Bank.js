@@ -1,7 +1,7 @@
 
 import BankAlbum from './BankAlbum'
 
-import { Box, Stack, Button, VStack } from '@chakra-ui/react'
+import { Box, Stack, Button, VStack, Image } from '@chakra-ui/react'
 
 import { useState, useEffect } from 'react'
 
@@ -12,12 +12,11 @@ import { useGetAlbumTracks } from '../hooks'
 
 function Bank({bank, setBank }) {
 
+  console.log('Bank bank', bank)
+
   const [playlist, setPlaylist] = useState([])
 
   const handleThread = e => {
-
-    console.log('here')
-
 
     let albumIDs = []
 
@@ -41,7 +40,20 @@ function Bank({bank, setBank }) {
       <VStack>
         <VStack>
           <Box height={"30vh"} width={"56vh"} outline={"2px solid black"}>
+            <VStack>
+              <Box outline={"2px solid black"}>
+                <Image
 
+
+                ></Image>
+              </Box>
+              <Box>
+
+              </Box>
+              <Box>
+
+              </Box>
+            </VStack>
           </Box>
           <Button left={"200px"}> Create Playlist
 

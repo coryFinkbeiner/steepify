@@ -6,6 +6,8 @@ import { } from '../hooks'
 
 function BankAlbum({ bank, setBank, data }) {
 
+  console.log('BankAlbum data', data)
+
   const [highlight, setHighlight] = useState(null)
 
   return (
@@ -24,3 +26,5 @@ function BankAlbum({ bank, setBank, data }) {
 
 export default BankAlbum;
 
+// src={bank[0].images[2].url}
+// objectFit='cover'
