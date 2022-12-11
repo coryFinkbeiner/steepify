@@ -17,7 +17,7 @@ function Search({ bank, setBank }) {
 
   useEffect(() => {
     setLoading(true)
-    fetch('https://api.spotify.com/v1/search?q='+currentSearch+'&type=album', {
+    fetch(currentSearch ? 'https://api.spotify.com/v1/search?q='+currentSearch+'&type=album' : null, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -30,14 +30,32 @@ function Search({ bank, setBank }) {
       })
   }, [currentSearch])
 
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
+  // if (isLoading) return <p>Loading...</p>
+  // if (!data) return <p>No profile data</p>
+
+  // console.log(data.albums.items)
 
   const handleInputChange = (e) => setInput(e.target.value)
   const handleSearchClick = (e) => {
     e.preventDefault()
     setCurrentSearch(input)
   }
+
+  // const searchResults = () => {
+
+    // if (!albums) return null
+
+    // console.log('asdfsa', albums)
+
+    // return albums.map( album => {
+    //   console.log(album)
+      // return (
+      //   <div> HO
+      //     <BankAlbum album={album} />
+      //   </div>
+      // )
+    // })
+  // }
 
   return (
     <Box margin={"10px"}>
@@ -49,22 +67,17 @@ function Search({ bank, setBank }) {
           </HStack>
         </form>
         <br></br>
+        <div>
+        {data &&
+          data.albums.items.map(album => {
+            return <BankAlbum album={album}/>
+          })
+        }
+        </div>
       </div>
     </Box>
   )
 }
-
-
-  // const searchResults = albums => {
-  //   return albums.map( album => {
-  //     console.log({album})
-  //     return (
-  //       <div>{album}</div>
-  //     )
-  //   })
-  // }
-
-
 
 
 export default Search;
