@@ -1,10 +1,30 @@
 import Link from 'next/link'
 import { Input, Button, ButtonGroup, Stack, HStack, Box } from '@chakra-ui/react'
+import useSWR from 'swr';
+import useCookies from '/Users/coryfinkbeiner/steeperkeeper/steepify_next1/hooks/cookies.js'
 
 
-const Search = ({ searchAlbums }) => {
 
-  console.log({searchAlbums})
+const fetcher = async () => {
+  const { getCookie } = useCookies();
+  const url = 'https://api.spotify.com/v1/search?q=damn&type=album';
+  const accessToken = getCookie('accessToken');
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    }
+  })
+  const data = response.json()
+  return data
+}
+
+const Search = () => {
+  const { data, error } = useSWR(`/search?q=damn`, fetcher)
+  if(error) return console.log(error)
+  if(!data) return 'NO DATA'
+
+  console.log({data})
 
   return (
     <div>
@@ -12,6 +32,18 @@ const Search = ({ searchAlbums }) => {
     </div>
   )
 }
+
+
+// const Search = ({ searchAlbums }) => {
+
+//   console.log({searchAlbums})
+
+//   return (
+//     <div>
+//       Search
+//     </div>
+//   )
+// }
 
 export default Search;
 
