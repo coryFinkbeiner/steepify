@@ -1,77 +1,73 @@
 import Link from 'next/link'
 import { Input, Button, ButtonGroup, Stack, HStack, Box } from '@chakra-ui/react'
-import useSWR from 'swr';
 import useCookies from '/Users/coryfinkbeiner/steeperkeeper/steepify_next1/hooks/cookies.js'
+import BankAlbum from './bankAlbum'
+import {useState, useEffect} from 'react'
 
 
-
-const fetcher = async () => {
+function Search({ bank, setBank }) {
   const { getCookie } = useCookies();
-  const url = 'https://api.spotify.com/v1/search?q=damn&type=album';
-  const accessToken = getCookie('accessToken');
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    }
-  })
-  const data = response.json()
-  return data
-}
+  const accessToken = getCookie('accessToken')
 
-const Search = () => {
-  const { data, error } = useSWR(`/search?q=damn`, fetcher)
-  if(error) return console.log(error)
-  if(!data) return 'NO DATA'
+  const [input, setInput] = useState('')
+  const [currentSearch, setCurrentSearch] = useState('')
 
-  console.log({data})
+  const [data, setData] = useState(null)
+  const [isLoading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    fetch('https://api.spotify.com/v1/search?q='+currentSearch+'&type=album', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      })
+  }, [currentSearch])
+
+  if (isLoading) return <p>Loading...</p>
+  if (!data) return <p>No profile data</p>
+
+  const handleInputChange = (e) => setInput(e.target.value)
+  const handleSearchClick = (e) => {
+    e.preventDefault()
+    setCurrentSearch(input)
+  }
 
   return (
-    <div>
-      Search
-    </div>
+    <Box margin={"10px"}>
+      <div>
+        <form onSubmit={handleSearchClick}>
+          <HStack>
+            <Button colorScheme='blue' type="submit">Search</Button>
+            <Input placeholder='Search Albums' size='lg' value={input} onChange={handleInputChange}/>
+          </HStack>
+        </form>
+        <br></br>
+      </div>
+    </Box>
   )
 }
 
 
-// const Search = ({ searchAlbums }) => {
+  // const searchResults = albums => {
+  //   return albums.map( album => {
+  //     console.log({album})
+  //     return (
+  //       <div>{album}</div>
+  //     )
+  //   })
+  // }
 
-//   console.log({searchAlbums})
 
-//   return (
-//     <div>
-//       Search
-//     </div>
-//   )
-// }
+
 
 export default Search;
 
 
 
-// return (
-//   <Box margin={"10px"}>
-//     <div>
-//       <form onSubmit={handleSearchClick}>
-//         <HStack>
-//           <Button colorScheme='blue' type="submit">Search</Button>
-//           <Input placeholder='Search Albums' size='lg' value={input} onChange={handleInputChange}/>
-//         </HStack>
-//       </form>
-//       <br></br>
-//       <Box height={"90vh"} outline={"2px groove black"} >
-//         {searchResults &&
-//           <Stack>
-//             {searchResults.albums.items.map((item, i) => {
-//               if (i <= 11) {
-//                 return (
-//                   <Album key={i} bank={bank} setBank={setBank} data={item}></Album>
-//                 )
-//               }
-//             })}
-//           </Stack>
-//         }
-//       </Box>
-//     </div>
-//   </Box>
-// )
