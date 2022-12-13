@@ -10,8 +10,26 @@ function BankAlbum({album}) {
 
 
   return (
-    <Box boxSize='sm'>
-      <Image src={album.images[1].url} alt='Dan Abramov' />
+    <Box
+      boxSize='100px'
+      objectFit='cover'
+      borderWidth='1px'
+      borderRadius='lg'
+      overflow='hidden'
+      border='1px'
+      borderColor='black'>
+
+
+    >
+      <HStack>
+        <Image
+          src={album.images[1].url}
+          alt='Dan Abramov'
+        />
+        
+
+
+      </HStack>
     </Box>
   )
 

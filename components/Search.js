@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Input, Button, ButtonGroup, Stack, HStack, Box } from '@chakra-ui/react'
 import useCookies from '/Users/coryfinkbeiner/steeperkeeper/steepify_next1/hooks/cookies.js'
-import BankAlbum from './bankAlbum'
+import BankAlbum from './BankAlbum'
 import {useState, useEffect} from 'react'
 
 
@@ -58,7 +58,7 @@ function Search({ bank, setBank }) {
   // }
 
   return (
-    <Box margin={"10px"}>
+    <Box  margin={"10px"}>
       <div>
         <form onSubmit={handleSearchClick}>
           <HStack>
@@ -67,13 +67,16 @@ function Search({ bank, setBank }) {
           </HStack>
         </form>
         <br></br>
-        <div>
-        {data &&
-          data.albums.items.map(album => {
-            return <BankAlbum album={album}/>
-          })
-        }
-        </div>
+        <Box
+          bg='white'
+          h='80vh'
+        >
+          {data &&
+            data.albums.items.map(album => {
+              return <BankAlbum album={album}/>
+            })
+          }
+        </Box>
       </div>
     </Box>
   )

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Sidebar from "../components/Sidebar"
+// import Sidebar from "../components/Sidebar"
 import MyApp from "./_app.js"
 import { getProviders, signIn } from "next-auth/react"
 
