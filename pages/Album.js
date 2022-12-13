@@ -10,6 +10,7 @@ function Album({ data, setBank, bank }) {
     <Box margin={'4px'} outline={"2px groove black"}>
       <HStack>
           <Image
+            
             src={data.images[2].url}
             objectFit='cover'
           ></Image>

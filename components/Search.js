@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { Input, Button, ButtonGroup, Stack, HStack, Box } from '@chakra-ui/react'
+import { Input, Button, ButtonGroup, Stack, HStack, Box, Flex} from '@chakra-ui/react'
 import useCookies from '/Users/coryfinkbeiner/steeperkeeper/steepify_next1/hooks/cookies.js'
-import BankAlbum from './BankAlbum'
+import SearchAlbum from './SearchAlbum'
 import {useState, useEffect} from 'react'
 
 
@@ -57,6 +57,10 @@ function Search({ bank, setBank }) {
     // })
   // }
 
+
+
+
+
   return (
     <Box  margin={"10px"}>
       <div>
@@ -67,19 +71,51 @@ function Search({ bank, setBank }) {
           </HStack>
         </form>
         <br></br>
-        <Box
-          bg='white'
+        <Flex
+          bg='black'
           h='80vh'
+          direction='rows'
+
         >
           {data &&
-            data.albums.items.map(album => {
-              return <BankAlbum album={album}/>
+            data.albums.items.map((album, i) => {
+
+              if (i < 3) return <SearchAlbum album={album}/>
             })
           }
-        </Box>
+        </Flex>
       </div>
     </Box>
   )
+
+
+
+
+
+
+  // return (
+  //   <Box  margin={"10px"}>
+  //     <div>
+  //       <form onSubmit={handleSearchClick}>
+  //         <HStack>
+  //           <Button colorScheme='blue' type="submit">Search</Button>
+  //           <Input placeholder='Search Albums' size='lg' value={input} onChange={handleInputChange}/>
+  //         </HStack>
+  //       </form>
+  //       <br></br>
+  //       <Box
+  //         bg='white'
+  //         h='80vh'
+  //       >
+  //         {data &&
+  //           data.albums.items.map(album => {
+  //             return <SearchAlbum album={album}/>
+  //           })
+  //         }
+  //       </Box>
+  //     </div>
+  //   </Box>
+  // )
 }
 
 

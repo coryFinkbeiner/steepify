@@ -14,6 +14,7 @@ function BankAlbum({ bank, setBank, data }) {
     <Box>
       <HStack>
           <Image
+            
             src={data.images[2].url}
             objectFit='cover'
           ></Image>

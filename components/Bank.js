@@ -1,5 +1,5 @@
 
-import BankAlbum from './BankAlbum'
+import SearchAlbum from './SearchAlbum'
 
 import { Box, Stack, Button, VStack, Image, Flex } from '@chakra-ui/react'
 
