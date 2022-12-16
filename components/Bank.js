@@ -43,6 +43,8 @@ function Bank({bank, setBank}) {
       .then((res) => res.json())
       .then((data) => {
         setAlbum2(data.items)
+        // console.log(album2)
+
       })
 
 
@@ -57,20 +59,36 @@ function Bank({bank, setBank}) {
         setAlbum3(data.items)
       })
 
-    var newPlaylist
 
+    var a1 = album1
+    var a2 = album2
+    var a3 = album3
 
+    var array = [a1, a2, a3]
 
+    var newPlaylist = []
+    var count = 0
 
+    while (count < 3) {
+      for (let i = 0; i< array.length; i++) {
+        if (!array[i].length) {
+          array.splice(i, 1)
+          count++
+          i--
+        } else {
+          newPlaylist.push(array[i].shift())
+        }
+
+      }
+    }
+
+    console.log(newPlaylist)
+
+    // setPlaylist(newPlaylist)
+
+    setPlaylist(newPlaylist)
 
   }
-
-
-
-
-
-  console.log({album1})
-  console.log({album2})
 
 
 
@@ -146,6 +164,7 @@ function Bank({bank, setBank}) {
           h='58vh'
           margin='5px'
         >
+        {playlist && <div>{playlist.length}</div>}
         </Box>
       </Flex>
     </Box>

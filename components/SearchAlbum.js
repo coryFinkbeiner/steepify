@@ -14,7 +14,7 @@ function SearchAlbum({album, bank, setBank}) {
   const handleClick = (e) => {
     if (bank.length < 4) {
       setBank([...bank, album])
-      console.log(bank)
+      // console.log(bank)
     }
     // else trigger modal
 
