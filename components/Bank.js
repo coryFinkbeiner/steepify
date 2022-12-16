@@ -1,16 +1,88 @@
 
 import BankAlbum from './BankAlbum'
 
+import useCookies from '/Users/coryfinkbeiner/steeperkeeper/steepify_next1/hooks/cookies.js'
+
 import { Box, Stack, Button, VStack, Image, Flex, Wrap, WrapItem, HStack } from '@chakra-ui/react'
 
 import { useState, useEffect } from 'react'
 
-// import { useGetAlbumTracks } from '../hooks'
-
 
 function Bank({bank, setBank}) {
+  const { getCookie } = useCookies();
+  const accessToken = getCookie('accessToken')
 
-  console.log('bank from Bank', bank)
+
+  const [playlist, setPlaylist] = useState([])
+
+  const [album1, setAlbum1] = useState([])
+  const [album2, setAlbum2] = useState([])
+  const [album3, setAlbum3] = useState([])
+
+
+  const fetchPlaylistSongs = () => {
+
+    fetch('https://api.spotify.com/v1/albums/' + bank[0].id + '/tracks', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAlbum1(data.items)
+      })
+
+
+    fetch('https://api.spotify.com/v1/albums/' + bank[1].id + '/tracks', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAlbum2(data.items)
+      })
+
+
+    fetch('https://api.spotify.com/v1/albums/' + bank[2].id + '/tracks', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAlbum3(data.items)
+      })
+
+    var newPlaylist
+
+
+
+
+
+  }
+
+
+
+
+
+  console.log({album1})
+  console.log({album2})
+
+
+
+
+
+
+  const handleCreatePlaylist = (e) => {
+
+    fetchPlaylistSongs()
+    e.preventDefault()
+
+  }
 
 
 
@@ -54,7 +126,11 @@ function Bank({bank, setBank}) {
           margin='5px'
           padding='3px'
         >
-          <Button>create playlist</Button>
+          <Button
+            onClick={handleCreatePlaylist}
+          >
+            create playlist
+          </Button>
 
 
           <Button
