@@ -18,6 +18,12 @@ function Search({ bank, setBank }) {
     setCurrentSearch(input)
   }
 
+
+
+
+
+
+  
   return (
     <Box margin={"10px"}>
       <div>
@@ -44,6 +50,10 @@ function Search({ bank, setBank }) {
       </div>
     </Box>
   )
+
+
+
+
 }
 
 export default Search;

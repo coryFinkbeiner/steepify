@@ -17,7 +17,7 @@ const Thread = () => {
         margin='20px'
       >
         <Box
-          w='50vh'
+          w='50%'
           h='90vh'
           bg='grey'
           borderColor='black'
@@ -25,7 +25,7 @@ const Thread = () => {
           <Search />
         </Box>
         <Box
-          w='50vh'
+          w='50%'
           h='90vh'
           bg='red.500'
         >
