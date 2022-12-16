@@ -1,53 +1,99 @@
 
-// import { Box, Image, HStack, Button, Card, CardHeader, CardBody, CardFooter, Text, VStack, Stack, ButtonGroup, Heading, Divider, Flex } from '@chakra-ui/react'
+import { Box, Image, HStack, Button, Card, CardHeader, CardBody, CardFooter, Text, VStack, Stack, ButtonGroup, Heading, Divider, Flex, Center } from '@chakra-ui/react'
+// import { useState, useEffect } from 'react'
+// import { } from '../hooks'
+import React, { useState } from 'react';
 
 
 
-// function BankAlbum() {
+const BankAlbum = ({album, bank, setBank})=> {
+
+  const [isShown, setIsShown] = useState(false);
+  // console.log(isShown)
+
+  const handleClick = (e) => {
+    if (bank.length < 3) {
+      setBank([...bank, album])
+      console.log(bank)
+    }
+    // else trigger modal
+
+
+    e.preventDefault()
+  }
 
 
 
 
-//   return (
-//     <Flex
-//       bg='white'
-//       w='15vh'
-//       h='20vh'
-//       margin='2px'
-//       direction='column'
-//       background='#181818'
-//       padding='1px'
-//       position='relative'
-//       transition='background-color .3s ease'
-//       border-radius='6px'
-//     >
-//       <Image
-//         src={album.images[2].url}
-//         border-radius='2px'
-//         width='100%'
-//         height='auto'
-//       >
-//       </Image>
-//       <Text
-//         font-weight='200'
-//         font-family='CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva'
-//         fontSize='xs'
-//         color='white'
-//       >
+  return (
+    <button
 
-//       </Text>
-//       <Text
-//         fontSize='xs'
-//         color='white'
-//       >
+      onClick={handleClick}
 
-//       </Text>
-//     </Flex>
-
-//   )
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}
 
 
 
-// }
+    >
 
-// export default BankAlbum;
+
+      <Flex
+        bg='white'
+        w='17vh'
+        h='20vh'
+        margin='2px'
+        direction='column'
+
+      >
+
+        <div>
+        {isShown &&
+
+          <div
+            position='absolute'
+            top='50%'
+            left='50%'
+            transform='translate(-50%, -50%)'
+          >
+            Remove from Bank
+          </div>
+
+
+        }
+        <Image
+          w= '100%'
+          src={album.images[2].url}
+
+
+        ></Image>
+
+        </div>
+
+
+          <Box>
+            <Text
+              bg='black'
+              color='white'
+              fontSize='12px'
+            >
+              {album.name}
+            </Text>
+            <Text
+              bg='black'
+              color='white'
+              fontSize='9px'
+            >
+              {album.artists[0].name}
+            </Text>
+          </Box>
+
+
+        </Flex>
+      </button>
+
+  )
+}
+
+
+  export default BankAlbum
