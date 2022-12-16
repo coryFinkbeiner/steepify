@@ -37,7 +37,7 @@ const Thread = () => {
           h='90%'
           bg='red.500'
         >
-          <Bank/>
+          <Bank bank={bank} setBank={setBank} />
         </Box>
       </Flex>
     </Box>
