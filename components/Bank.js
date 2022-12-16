@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react'
 
 function Bank({bank, setBank}) {
 
-
+  console.log('bank from Bank', bank)
 
 
 

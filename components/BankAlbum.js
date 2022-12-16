@@ -12,11 +12,32 @@ const BankAlbum = ({album, bank, setBank})=> {
   // console.log(isShown)
 
   const handleClick = (e) => {
-    if (bank.length < 3) {
-      setBank([...bank, album])
-      console.log(bank)
+
+    console.log(bank)
+
+    var newBank = bank
+
+    console.log(bank)
+
+
+      // delete newBank[i]
+      // newBank.filter(Object)
+      // console.log(newBank)
+      // setBank(newBank)
+
+
+    for (let i = 0; i < newBank.length; i++) {
+      if (newBank[i].name === album.name) {
+        newBank = newBank.slice(i)
+        setBank(newBank)
+      }
     }
-    // else trigger modal
+
+    // console.log(album.name)
+    // console.log({newBank})
+    // console.log({bank})
+
+
 
 
     e.preventDefault()
