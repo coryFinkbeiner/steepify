@@ -60,9 +60,17 @@ function Search({ bank, setBank }) {
 
 
 
-
   return (
-    <Box  margin={"10px"}>
+    <Box
+      h='88vh'
+      w='48vh'
+      bg='purple'
+      margin='10px'
+    >
+
+    <Box
+      margin={"10px"}
+    >
       <div>
         <form onSubmit={handleSearchClick}>
           <HStack>
@@ -86,6 +94,9 @@ function Search({ bank, setBank }) {
         </Flex>
       </div>
     </Box>
+
+
+    </Box>
   )
 
 
@@ -93,7 +104,11 @@ function Search({ bank, setBank }) {
 
 
 
+
+
+
   // return (
+
   //   <Box  margin={"10px"}>
   //     <div>
   //       <form onSubmit={handleSearchClick}>
@@ -103,19 +118,24 @@ function Search({ bank, setBank }) {
   //         </HStack>
   //       </form>
   //       <br></br>
-  //       <Box
-  //         bg='white'
+  //       <Flex
+  //         bg='black'
   //         h='80vh'
+  //         direction='rows'
+
   //       >
   //         {data &&
-  //           data.albums.items.map(album => {
-  //             return <SearchAlbum album={album}/>
+  //           data.albums.items.map((album, i) => {
+
+  //             if (i < 3) return <SearchAlbum album={album}/>
   //           })
   //         }
-  //       </Box>
+  //       </Flex>
   //     </div>
   //   </Box>
   // )
+
+
 }
 
 

@@ -17,6 +17,7 @@ const Thread = () => {
         margin='20px'
       >
         <Box
+          align='right'
           w='50%'
           h='90vh'
           bg='grey'

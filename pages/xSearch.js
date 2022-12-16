@@ -23,9 +23,17 @@ function Search({ bank, setBank }) {
 
 
 
-  
   return (
-    <Box margin={"10px"}>
+
+
+    <Box
+       margin={"10px"}
+       h='88vh'
+       w='48vh'
+       bg='purple'
+       margin='10px'
+       align='center'
+    >
       <div>
         <form onSubmit={handleSearchClick}>
           <HStack>
@@ -48,8 +56,43 @@ function Search({ bank, setBank }) {
           }
         </Box>
       </div>
+
     </Box>
   )
+
+
+
+
+
+
+
+
+  // return (
+  //   <Box margin={"10px"}>
+  //     <div>
+  //       <form onSubmit={handleSearchClick}>
+  //         <HStack>
+  //           <Button colorScheme='blue' type="submit">Search</Button>
+  //           <Input placeholder='Search Albums' size='lg' value={input} onChange={handleInputChange}/>
+  //         </HStack>
+  //       </form>
+  //       <br></br>
+  //       <Box height={"90vh"} outline={"2px groove black"} >
+  //         {searchResults &&
+  //           <Stack>
+  //             {searchResults.albums.items.map((item, i) => {
+  //               if (i <= 11) {
+  //                 return (
+  //                   <Album key={i} bank={bank} setBank={setBank} data={item}></Album>
+  //                 )
+  //               }
+  //             })}
+  //           </Stack>
+  //         }
+  //       </Box>
+  //     </div>
+  //   </Box>
+  // )
 
 
 
