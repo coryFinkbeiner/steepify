@@ -20,9 +20,6 @@ function Search({ bank, setBank }) {
 
 
 
-
-
-
   return (
 
 

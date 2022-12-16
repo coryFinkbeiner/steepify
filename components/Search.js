@@ -30,35 +30,13 @@ function Search({ bank, setBank }) {
       })
   }, [currentSearch])
 
-  // if (isLoading) return <p>Loading...</p>
-  // if (!data) return <p>No profile data</p>
 
-  // console.log(data.albums.items)
 
   const handleInputChange = (e) => setInput(e.target.value)
   const handleSearchClick = (e) => {
     e.preventDefault()
     setCurrentSearch(input)
   }
-
-  // const searchResults = () => {
-
-    // if (!albums) return null
-
-    // console.log('asdfsa', albums)
-
-    // return albums.map( album => {
-    //   console.log(album)
-      // return (
-      //   <div> HO
-      //     <BankAlbum album={album} />
-      //   </div>
-      // )
-    // })
-  // }
-
-
-
 
   return (
     <Box
@@ -93,7 +71,7 @@ function Search({ bank, setBank }) {
 
                     if (i < 20) return (
                       <WrapItem>
-                          <SearchAlbum album={album}/>
+                          <SearchAlbum bank={bank} setBank={setBank} key={i} album={album}/>
                       </WrapItem>
 
                     )
@@ -108,54 +86,6 @@ function Search({ bank, setBank }) {
 
     </Box>
   )
-
-
-
-
-
-
-
-
-  // return (
-  //   <Box
-  //     h='88vh'
-  //     w='48vh'
-  //     bg='purple'
-  //     margin='10px'
-  //   >
-
-  //   <Box
-  //     margin={"10px"}
-  //   >
-  //     <div>
-  //       <form onSubmit={handleSearchClick}>
-  //         <HStack>
-  //           <Button colorScheme='blue' type="submit">Search</Button>
-  //           <Input placeholder='Search Albums' size='lg' value={input} onChange={handleInputChange}/>
-  //         </HStack>
-  //       </form>
-  //       <br></br>
-  //       <Flex
-  //         bg='black'
-  //         h='80vh'
-  //         direction='rows'
-
-  //       >
-
-  //         {data &&
-  //           data.albums.items.map((album, i) => {
-
-  //             if (i < 3) return <SearchAlbum album={album}/>
-  //           })
-  //         }
-  //       </Flex>
-  //     </div>
-  //   </Box>
-
-
-  //   </Box>
-  // )
-
 
 }
 
