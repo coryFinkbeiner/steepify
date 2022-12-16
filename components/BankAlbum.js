@@ -6,54 +6,14 @@ import React, { useState } from 'react';
 
 
 
-const BankAlbum = ({album, bank, setBank})=> {
+const BankAlbum = ({album, bank, setBank, key})=> {
 
-  const [isShown, setIsShown] = useState(false);
-  // console.log(isShown)
-
-  const handleClick = (e) => {
-
-    console.log(bank)
-
-    var newBank = bank
-
-    console.log(bank)
-
-
-      // delete newBank[i]
-      // newBank.filter(Object)
-      // console.log(newBank)
-      // setBank(newBank)
-
-
-    for (let i = 0; i < newBank.length; i++) {
-      if (newBank[i].name === album.name) {
-        newBank = newBank.slice(i)
-        setBank(newBank)
-      }
-    }
-
-    // console.log(album.name)
-    // console.log({newBank})
-    // console.log({bank})
-
-
-
-
-    e.preventDefault()
-  }
 
 
 
 
   return (
-    <button
-
-      onClick={handleClick}
-
-      onMouseEnter={() => setIsShown(true)}
-      onMouseLeave={() => setIsShown(false)}
-
+    <div
 
 
     >
@@ -69,19 +29,6 @@ const BankAlbum = ({album, bank, setBank})=> {
       >
 
         <div>
-        {isShown &&
-
-          <div
-            position='absolute'
-            top='50%'
-            left='50%'
-            transform='translate(-50%, -50%)'
-          >
-            Remove from Bank
-          </div>
-
-
-        }
         <Image
           w= '100%'
           src={album.images[2].url}
@@ -111,7 +58,7 @@ const BankAlbum = ({album, bank, setBank})=> {
 
 
         </Flex>
-      </button>
+      </div>
 
   )
 }
