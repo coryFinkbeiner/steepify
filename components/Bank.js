@@ -1,5 +1,6 @@
 
 import BankAlbum from './BankAlbum'
+import PlaylistSong from './PlaylistSong'
 
 import useCookies from '/Users/coryfinkbeiner/steeperkeeper/steepify_next1/hooks/cookies.js'
 
@@ -47,7 +48,6 @@ function Bank({bank, setBank}) {
 
       })
 
-
     fetch('https://api.spotify.com/v1/albums/' + bank[2].id + '/tracks', {
       method: 'GET',
       headers: {
@@ -58,7 +58,6 @@ function Bank({bank, setBank}) {
       .then((data) => {
         setAlbum3(data.items)
       })
-
 
     var a1 = album1
     var a2 = album2
@@ -81,13 +80,8 @@ function Bank({bank, setBank}) {
 
       }
     }
-
     console.log(newPlaylist)
-
-    // setPlaylist(newPlaylist)
-
     setPlaylist(newPlaylist)
-
   }
 
 
@@ -158,14 +152,25 @@ function Bank({bank, setBank}) {
           </Button>
 
         </HStack>
-        <Box
+        <VStack
           bg='white'
           w='45vh'
           h='58vh'
           margin='5px'
         >
-        {playlist && <div>{playlist.length}</div>}
-        </Box>
+        {playlist &&
+
+          playlist.map((song, i) => {
+
+            return (
+              <div>
+                <PlaylistSong song={song} key={i}/>
+              </div>
+            )
+          })
+
+        }
+        </VStack>
       </Flex>
     </Box>
   )
