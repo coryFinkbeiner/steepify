@@ -8,37 +8,22 @@ import React, { useState } from 'react';
 
 const BankAlbum = ({album, bank, setBank, key})=> {
 
-
-
-
-
   return (
-    <div
-
-
-    >
-
-
+    <div>
       <Flex
         bg='white'
         w='17vh'
         h='20vh'
         margin='2px'
         direction='column'
-
       >
-
         <div>
-        <Image
-          w= '100%'
-          src={album.images[2].url}
-
-
-        ></Image>
+          <Image
+            w= '100%'
+            src={album.images[2].url}
+          ></Image>
 
         </div>
-
-
           <Box>
             <Text
               bg='black'
@@ -55,11 +40,8 @@ const BankAlbum = ({album, bank, setBank, key})=> {
               {album.artists[0].name}
             </Text>
           </Box>
-
-
         </Flex>
       </div>
-
   )
 }
 

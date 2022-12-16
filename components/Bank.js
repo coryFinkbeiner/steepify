@@ -1,7 +1,7 @@
 
 import BankAlbum from './BankAlbum'
 
-import { Box, Stack, Button, VStack, Image, Flex, Wrap, WrapItem } from '@chakra-ui/react'
+import { Box, Stack, Button, VStack, Image, Flex, Wrap, WrapItem, HStack } from '@chakra-ui/react'
 
 import { useState, useEffect } from 'react'
 
@@ -14,6 +14,7 @@ function Bank({bank, setBank}) {
 
 
 
+
   return (
     <Box
       padding='3px'
@@ -21,7 +22,7 @@ function Bank({bank, setBank}) {
       h='95%'
       w='95%'
       bg='purple'
-      margin='10px'
+      margin='3px'
       align='center'
     >
       <Flex
@@ -37,6 +38,8 @@ function Bank({bank, setBank}) {
           w='97%'
           direction='rows'
           z-index='1'
+          margin='1px'
+          padding='1px'
 
         >
           {bank &&
@@ -47,7 +50,20 @@ function Bank({bank, setBank}) {
             })
           }
         </Flex>
+        <HStack
+          margin='5px'
+          padding='3px'
+        >
+          <Button>create playlist</Button>
 
+
+          <Button
+            onClick={()=> setBank([])}
+          >
+            clear bank
+          </Button>
+
+        </HStack>
         <Box
           bg='white'
           w='45vh'
