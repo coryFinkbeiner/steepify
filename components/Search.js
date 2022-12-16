@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Input, Button, ButtonGroup, Stack, HStack, Box, Flex} from '@chakra-ui/react'
+import { Input, Button, ButtonGroup, Stack, HStack, Box, Flex, Wrap, WrapItem, Center } from '@chakra-ui/react'
 import useCookies from '/Users/coryfinkbeiner/steeperkeeper/steepify_next1/hooks/cookies.js'
 import SearchAlbum from './SearchAlbum'
 import {useState, useEffect} from 'react'
@@ -63,7 +63,7 @@ function Search({ bank, setBank }) {
   return (
     <Box
       h='88vh'
-      w='48vh'
+      w='90%'
       bg='purple'
       margin='10px'
     >
@@ -82,15 +82,25 @@ function Search({ bank, setBank }) {
         <Flex
           bg='black'
           h='80vh'
-          direction='rows'
+          direction='wrap'
+
 
         >
-          {data &&
-            data.albums.items.map((album, i) => {
+          <Wrap>
 
-              if (i < 3) return <SearchAlbum album={album}/>
-            })
-          }
+                {data &&
+                  data.albums.items.map((album, i) => {
+
+                    if (i < 20) return (
+                      <WrapItem>
+                          <SearchAlbum album={album}/>
+                      </WrapItem>
+
+                    )
+                  })
+                }
+
+          </Wrap>
         </Flex>
       </div>
     </Box>
@@ -106,10 +116,17 @@ function Search({ bank, setBank }) {
 
 
 
-
   // return (
+  //   <Box
+  //     h='88vh'
+  //     w='48vh'
+  //     bg='purple'
+  //     margin='10px'
+  //   >
 
-  //   <Box  margin={"10px"}>
+  //   <Box
+  //     margin={"10px"}
+  //   >
   //     <div>
   //       <form onSubmit={handleSearchClick}>
   //         <HStack>
@@ -124,6 +141,7 @@ function Search({ bank, setBank }) {
   //         direction='rows'
 
   //       >
+
   //         {data &&
   //           data.albums.items.map((album, i) => {
 
@@ -132,6 +150,9 @@ function Search({ bank, setBank }) {
   //         }
   //       </Flex>
   //     </div>
+  //   </Box>
+
+
   //   </Box>
   // )
 

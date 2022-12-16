@@ -28,7 +28,7 @@ function Search({ bank, setBank }) {
 
     <Box
        margin={"10px"}
-       h='88vh'
+       h='100%'
        w='48vh'
        bg='purple'
        margin='10px'

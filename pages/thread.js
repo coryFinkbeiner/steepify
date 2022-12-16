@@ -14,20 +14,21 @@ const Thread = () => {
         direction='row'
         justify='space-around'
         align='center'
-        margin='20px'
+        margin='6px'
       >
         <Box
+          padding='3px'
           align='right'
-          w='50%'
-          h='90vh'
+          w='65%'
+          h='100%'
           bg='grey'
           borderColor='black'
         >
           <Search />
         </Box>
         <Box
-          w='50%'
-          h='90vh'
+          w='35%'
+          h='90%'
           bg='red.500'
         >
           <Bank/>
