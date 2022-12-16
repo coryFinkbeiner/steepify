@@ -20,12 +20,12 @@ const Thread = () => {
         direction='row'
         justify='space-around'
         align='center'
-        margin='6px'
+        margin='3px'
       >
         <Box
           padding='3px'
           align='right'
-          w='65%'
+          w='61%'
           h='100%'
           bg='grey'
           borderColor='black'
@@ -33,8 +33,8 @@ const Thread = () => {
           <Search bank={bank} setBank={setBank} />
         </Box>
         <Box
-          w='35%'
-          h='90%'
+          w='39%'
+          h='97%'
           bg='red.500'
         >
           <Bank bank={bank} setBank={setBank} />

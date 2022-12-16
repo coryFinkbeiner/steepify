@@ -3,14 +3,48 @@ import { Box, Image, HStack, Button, Card, CardHeader, CardBody, CardFooter, Tex
 import { useState } from 'react';
 
 
-const PlaylistSong = ({song}) => {
-
+const PlaylistSong = ({song, key, i}) => {
 
   console.log({song})
 
 
+
   return (
-    <div>{song.name}</div>
+    <HStack
+      bg='orange'
+    >
+      <Text>
+        {i}
+      </Text>
+      <Image
+        src={song.img}
+      >
+      </Image>
+      <VStack>
+        <Text
+          fontSize='16px'
+        >
+          {song.name}
+        </Text>
+        <Text
+          fontSize='12px'
+        >
+          {song.artists[0].name}
+        </Text>
+      </VStack>
+      <Text
+        fontSize='12px'
+
+      >
+        {song.album_title}
+      </Text>
+      <Text
+        fontSize='12px'
+      >
+        {song.duration_ms + ' ms'}
+      </Text>
+
+    </HStack>
   )
 
 }

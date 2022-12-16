@@ -31,6 +31,10 @@ function Bank({bank, setBank}) {
     })
       .then((res) => res.json())
       .then((data) => {
+        for (const song of data.items) {
+          song.album_title = bank[0].name
+          song.img = bank[0].images[2].url
+        }
         setAlbum1(data.items)
       })
 
@@ -43,9 +47,11 @@ function Bank({bank, setBank}) {
     })
       .then((res) => res.json())
       .then((data) => {
+        for (const song of data.items) {
+          song.img = bank[1].images[2].url
+          song.album_title = bank[1].name
+        }
         setAlbum2(data.items)
-        // console.log(album2)
-
       })
 
     fetch('https://api.spotify.com/v1/albums/' + bank[2].id + '/tracks', {
@@ -56,12 +62,25 @@ function Bank({bank, setBank}) {
     })
       .then((res) => res.json())
       .then((data) => {
+        for (const song of data.items) {
+          song.album_title = bank[2].name
+          song.img = bank[2].images[2].url
+        }
         setAlbum3(data.items)
       })
+
+      // console.log({album1})
+      // console.log({album2})
+      // console.log({album3})
+
+
+
+
 
     var a1 = album1
     var a2 = album2
     var a3 = album3
+
 
     var array = [a1, a2, a3]
 
@@ -80,7 +99,7 @@ function Bank({bank, setBank}) {
 
       }
     }
-    console.log(newPlaylist)
+    // console.log(newPlaylist)
     setPlaylist(newPlaylist)
   }
 
@@ -104,7 +123,7 @@ function Bank({bank, setBank}) {
       padding='3px'
       margin='3px'
       h='95%'
-      w='95%'
+      w='97%'
       bg='purple'
       margin='3px'
       align='center'
@@ -135,8 +154,8 @@ function Bank({bank, setBank}) {
           }
         </Flex>
         <HStack
-          margin='5px'
-          padding='3px'
+          margin='2px'
+          padding='2px'
         >
           <Button
             onClick={handleCreatePlaylist}
@@ -154,7 +173,7 @@ function Bank({bank, setBank}) {
         </HStack>
         <VStack
           bg='white'
-          w='45vh'
+          w='90'
           h='58vh'
           margin='5px'
         >
@@ -162,11 +181,11 @@ function Bank({bank, setBank}) {
 
           playlist.map((song, i) => {
 
-            return (
-              <div>
-                <PlaylistSong song={song} key={i}/>
-              </div>
-            )
+            if (i < 7) {
+              return (
+                  <PlaylistSong song={song} key={JSON.stringify(i)} i={i}/>
+              )
+            }
           })
 
         }
