@@ -21,6 +21,63 @@ function Bank({bank, setBank}) {
   const [album3, setAlbum3] = useState([])
 
 
+  const handlePostClick = () => {
+    if (bank.length === 3) postPlaylist()
+  }
+
+
+
+  const postPlaylist = () => {
+
+    const playlistName = ''
+    const playlistDescription = ''
+
+    const playlistURIs = []
+
+
+    fetch('https://api.spotify.com/v1/users/' + 'j9qnui1zy8xf6nnuemleq5qfu' + '/playlists', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+
+        name: 'test',
+        description: 'this is a test'
+    
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('post data', data)
+      })
+
+
+
+    // fetch('https://api.spotify.com/v1/playlists/' +  + '/tracks', {
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: `Bearer ${accessToken}`,
+    //   },
+    //   data: {
+    //     uris: [
+
+    //     ]
+    //   }
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+
+    //   })
+
+
+  }
+
+
+
+
+
+
+
+
   const fetchPlaylistSongs = () => {
 
     fetch('https://api.spotify.com/v1/albums/' + bank[0].id + '/tracks', {
@@ -191,6 +248,10 @@ function Bank({bank, setBank}) {
         }
         </VStack>
       </Flex>
+      <Button
+        onClick={handlePostClick}
+
+      >post</Button>
     </Box>
   )
 

@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const PlaylistSong = ({song, key, i}) => {
 
-  console.log({song})
+  // console.log({song})
 
 
 
