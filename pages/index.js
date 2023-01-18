@@ -14,7 +14,7 @@ export default function Home({ providers }) {
       {Object.values(providers).map((provider) => (
         <div key={provider.name}>
           <button
-            onClick={() => signIn(provider.id, { callbackUrl: "/thread"})}
+            onClick={() => signIn(provider.id, { callbackUrl: "/home"})}
           >
             Login with {provider.name}
           </button>
